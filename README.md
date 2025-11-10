@@ -85,6 +85,9 @@ python conexion.py
 - Usa variables de entorno para información sensible
 - El archivo `.gitignore` protege tus credenciales
 
+
+## Requerimientos del google shets
+
 ##  Autor
 
 Janine Flores, Yostin Campoy
