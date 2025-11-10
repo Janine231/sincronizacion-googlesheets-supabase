@@ -87,7 +87,24 @@ python conexion.py
 
 
 ## Requerimientos del google shets
-
+Solo lee 17 columnas y son  las siguientes: 
+       "created_at":
+        "email":
+        "carrera": 
+        "semestre":
+        "edad":
+        "genero":
+        "trabajas": 
+        "closet": 
+        "conocidos": 
+        "vida_compra": 
+        "innecesario": 
+        "no_planeado": 
+        "compulsivo":
+        "ofertas": 
+        "ingresos": 
+        "deudas":
+        "tarjeta":
 ##  Autor
 
 Janine Flores, Yostin Campoy
