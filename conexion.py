@@ -97,7 +97,7 @@ def index():
     </head>
     <body>
         <div class="container">
-            <h1>🔄 API de Sincronización</h1>
+            <h1>API de Sincronización</h1>
             <p>Sistema de sincronización de Google Sheets con Supabase</p>
 
             <h2>Rutas disponibles:</h2>
@@ -190,9 +190,14 @@ def sync_data():
 
         for idx, fila in enumerate(registros, start=2):  # start=2 porque la fila 1 son encabezados
             try:
-                # Saltar filas vacías
+                # Saltar filas completamente vacías
                 if not any(fila):
-                    print(f"  Fila {idx} está vacía, saltando...")
+                    print(f"Fila {idx} vacía, saltando...")
+                    continue
+
+                # Filtro adicional: saltar filas sin correo (columna 2 = fila[1])
+                if len(fila) < 2 or not fila[1].strip():
+                    print(f" Fila {idx} sin correo, saltando...")
                     continue
 
                 res = insertar_respuesta_supabase(fila)
@@ -203,7 +208,7 @@ def sync_data():
                 errores.append({"fila": idx, "error": str(e)})
 
         return jsonify({
-            "mensaje": " Sincronización completada" if not errores else "⚠️ Sincronización completada con errores",
+            "mensaje": " Sincronización completada" if not errores else " Sincronización completada con errores",
             "registros_insertados": len(resultados),
             "registros_con_error": len(errores),
             "detalles_errores": errores if errores else None
